@@ -3,9 +3,11 @@
 import { useRef, useState, FormEvent } from "react";
 import Link from "next/link";
 
+import { useData } from "./components/useData";
+
 interface User {
   username: string,
-  password: string
+  password: string,
 };
 
 interface Errors {
@@ -16,6 +18,8 @@ interface Errors {
 
 export default function FirstPageLogin() {
 
+  const { usersList } = useData()
+
   const [errors, setErrors] = useState<Errors>({
     username: '',
     password: '',
@@ -24,17 +28,6 @@ export default function FirstPageLogin() {
 
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-
-  const users: User[] = [
-    {
-      username: 'Giove97',
-      password: 'belpianeta'
-    },
-    {
-      username: 'Urano88',
-      password: 'bellissimopianeta'
-    }
-  ]
 
   const handleForm = () => {
       const newErrors: Errors = {
@@ -59,7 +52,7 @@ export default function FirstPageLogin() {
         return
       }
 
-      const userFound: User | undefined = users.find((curUsers) => curUsers.username === enteredUsername && curUsers.password === enteredPassword)
+      const userFound: User | undefined = usersList.find((curUsers) => curUsers.username === enteredUsername && curUsers.password === enteredPassword)
 
       if (userFound) {
         setErrors({

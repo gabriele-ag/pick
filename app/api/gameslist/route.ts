@@ -3,15 +3,14 @@ import { NextResponse } from "next/server";
 import { Game } from "./model/games";
 import { User } from "./model/user";
 
-import gamesList from "../../data/gamesList.json"
-import userList from "../../data/usersList.json"
+import gamesList from "../../../data/gamesList.json"
+import userList from "../../../data/usersList.json"
 
 
 const games: Game[] = gamesList as Game[]
 const users: User[] = userList as User[]
 
 export function GET() {
-
     const data = {
         gamesdata: games,
         userdata: users
