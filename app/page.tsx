@@ -1,79 +1,66 @@
 'use client'
 
-import { useRef, useState, FormEvent } from "react";
+import { useRef, useState} from "react";
 import Link from "next/link";
 
-import { useData } from "./components/useData";
+import { useRouter } from 'next/navigation'
 
-interface User {
-  username: string,
-  password: string,
-};
-
-interface Errors {
-  username: string,
-  password: string,
-  general: string
-};
+type LoginError = {
+  general?: string,
+  email?: string,
+  password?: string
+}
 
 export default function FirstPageLogin() {
 
-  const { usersList } = useData()
+    const emailRef= useRef<HTMLInputElement>(null)
+    const passwordRef = useRef<HTMLInputElement>(null)
 
-  const [errors, setErrors] = useState<Errors>({
-    username: '',
-    password: '',
-    general: ''
-  });
+    const [error, setError] = useState<LoginError>({})
+    
+    const router = useRouter()
+    
+    const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL
 
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
 
-  const handleForm = () => {
-      const newErrors: Errors = {
-        username: '',
-        password: '',
-        general: ''
+    const handleLogin = async (e: React.FormEvent) => {
+      e.preventDefault()
+      setError({})
+
+      const emailValue = emailRef.current?.value
+      const passwordValue = passwordRef.current?.value
+
+      if (!emailValue) {
+        return setError({email: "L'email è obbligatoria"})
       }
-
-      const enteredUsername = usernameRef.current ? usernameRef.current.value.trim() : ''
-      const enteredPassword = passwordRef.current ? passwordRef.current.value : ''
-
-      if (!enteredUsername) {
-        newErrors.username = 'Inserisci il nome utente corretto'
+      if (!passwordValue) {
+        return setError({password: "La password è obbligatoria"})
       }
+      
 
-      if (!enteredPassword) {
-        newErrors.password = 'Inserisci una password corretta'
-      }
-
-      if (Object.values(newErrors).some(error => error !== '')) {
-        setErrors(newErrors)
-        return
-      }
-
-      const userFound: User | undefined = usersList.find((curUsers) => curUsers.username === enteredUsername && curUsers.password === enteredPassword)
-
-      if (userFound) {
-        setErrors({
-          username: '',
-          password: '',
-          general: ''
+      try {
+        const response = await fetch(`${apiUrl}/api/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({email: emailValue, password: passwordValue})
         })
-        alert(`Accesso eseguito con successo! Benvenuto: ${userFound.username}`)
-      } else {
-        setErrors({
-          username: '',
-          password: '',
-          general: 'Nome utente e password errati'
-        })
-      }   
-  }
+        const result = await response.json()
 
-  const handleSubmit = (e: FormEvent): void => {
-    e.preventDefault()
-    handleForm()
-  }
+        if (!response.ok) {
+          setError({general: result.message || "Errore di accesso"})
+        }
+
+        if (response.ok) {
+          localStorage.setItem('token', result.token)
+          router.push('/account')
+        } else {
+          setError({ general: result.message || 'Credenziali non valide'})
+        }
+      } catch (error) {
+        setError({general: "Il server non risponde"})
+      }
+    }
+
 
 
   return (
@@ -81,14 +68,18 @@ export default function FirstPageLogin() {
     <div>
       <h1>pick</h1>
       <div>
-        <form onSubmit={handleSubmit}>
-          {errors.general && <p>{errors.general}</p>}
-          <label htmlFor="">Username</label>
-          <input type="text" id="username" ref={usernameRef} />
-          {errors.username && <p>{errors.username}</p>}
+        <form onSubmit={handleLogin}>
+          {error.general && <p>{error.general}</p>}
+
+          <label htmlFor="">Email</label>
+          <input type="text" id="email" ref={emailRef} />
+
+          {error.email && <p>{error.email}</p>}
+
           <label htmlFor="">Password</label>
           <input type="password" id="password" ref={passwordRef} />
-          {errors.password && <p>{errors.password}</p>}
+  
+          {error.password && <p>{error.password}</p>}
 
           <button type="submit">Accedi</button>
         </form>

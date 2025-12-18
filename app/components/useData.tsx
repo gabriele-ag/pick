@@ -1,41 +1,37 @@
+'use client'
+
+import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
-
-import { Game } from "../api/gameslist/model/games"
-import { User } from "../api/gameslist/model/user"
-
-interface ApiResponse {
-    gamesdata: Game[],
-    userdata: User[]
-}
 
 export function useData() {
 
-    const [gamesList, setGamesList] = useState<Game[]>([])
-    const [usersList, setUsersList] = useState<User[]>([])
+    
+    const [data, setData] = useState<any[] | null>([])
+    
+    const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL
 
-    async function fetchData(): Promise<ApiResponse | null> {
-        try {
 
-            const apiUrl = '/api/gameslist'
-            const response = await fetch(apiUrl)
-            if(!response.ok) {
-                throw new Error('Errore nel recupero dei giochi')
+    async function fetchData() {
+
+        try {          
+            const response = await fetch(`${apiUrl}/api`)
+            if (!response.ok) {
+                throw new Error('Errore nel recupero dei dati')
             }
 
-            const data: ApiResponse = await response.json()
-                   
-            setGamesList(data.gamesdata)
-            setUsersList(data.userdata)
-            return data
+            const result = await response.json()
+            setData(result.data)
+            console.log(result.data)
+            return result.data
         } catch (error) {
-            console.error('Errore nel recupero dei giochi:', error)
-            return null
+            console.error('Errore nel recupero dei dati:', error)
+            return []
         }
     }
 
     useEffect(() => {
-        fetchData()
-    }, [])
+            fetchData()
+        }, [])
 
-    return {fetchData, gamesList, usersList}
+    return {fetchData, data}
 }
