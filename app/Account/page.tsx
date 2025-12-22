@@ -1,7 +1,12 @@
+'use client'
 
+import { useState } from "react"
 import styles from "./account.module.css"
 
 export default function Account() {
+
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <>
         <section className={styles.headerApp}>
