@@ -1,0 +1,19 @@
+
+.headerApp {
+    padding: 30px 40px;
+}
+
+.navAccount {
+    display: flex;
+    justify-content: space-between;
+}
+
+.divButton {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.button {
+    font-weight: bold;
+}
