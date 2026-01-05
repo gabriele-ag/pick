@@ -2,6 +2,7 @@
 
 import { useRef, useState} from "react";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 import { useRouter } from 'next/navigation'
 
@@ -59,6 +60,13 @@ export default function FirstPageLogin() {
 
         if (response.ok) {
           localStorage.setItem('token', result.token)
+
+          Cookies.set('token', result.token, {
+            expires: 1,
+            path: '/',
+            sameSite: 'strict'
+          })
+
           setSuccess("Login effettuato! Benvenuto su Pick!")
           setTimeout(() => {
             router.push('/Benvenuto')
