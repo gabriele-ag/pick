@@ -91,7 +91,7 @@ export default function Account() {
                 ) : (
                     collection.map((gioco) => (
                         <div key={gioco.id} className={styles.card}>
-                            <h3>{gioco.titolo}</h3>
+                            <h3>{gioco.name}</h3>
                             <p>Stato: <strong>{gioco.stato}</strong></p>
                             
                             <div className={styles.actions}>

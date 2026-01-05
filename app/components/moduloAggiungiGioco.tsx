@@ -3,8 +3,8 @@ import Cookies from "js-cookie"
 
 type Game = {
     id: string;
-    titolo: string;
-    genere: string;
+    name: string;
+    genre: string;
 }
 
 type modalProps = {
@@ -42,11 +42,11 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
                 return
             }
 
-            const response = await fetch(`${apiUrl}/api/games/search?q=${encodeURIComponent(search)}`, {
+            const response = await fetch(`${apiUrl}/api?name=${encodeURIComponent(search)}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
-            })
+            });
 
             if (!response.ok) {
                 throw new Error('Errore durante la ricerca dei giochi')
@@ -132,7 +132,7 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
                         <ul>
                             {searchResult.map((game) => (
                                 <li key={game.id} className="flex justify-between items-center p-2 border-b last:border-b-0">
-                                    <span>{game.titolo}</span>
+                                    <span>{game.name}</span>
                                     <button
                                         onClick={() => handleAddGame(game.id)}
                                         className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 text-sm"
