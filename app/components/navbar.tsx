@@ -26,6 +26,7 @@ export default function Navbar() {
 
     return (
     <header className="p-4 border-b">
+        <h1>Pick</h1>
         <nav className="flex gap-4">
             <Link href="/Account">Il tuo profilo</Link>
         </nav>
