@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { useData } from "../components/useData"
 import ModaleAggiungiGioco from "../components/moduloAggiungiGioco"
 
-import styles from "./account.module.css"
+import styles from "./CSS/account.module.css"
 
 type Game = {
     id: string;

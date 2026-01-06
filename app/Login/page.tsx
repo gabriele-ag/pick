@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 
 import { useRouter } from 'next/navigation'
 
+import styles from "./CSS/login.module.css"
+
 // Tipizzo errore al login
 type LoginError = {
   general?: string,

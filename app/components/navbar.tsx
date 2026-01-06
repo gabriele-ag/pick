@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import Cookies from "js-cookie"
 
+import styles from "./CSS/navbar.module.css"
+
 
 export default function Navbar() {
     
@@ -25,12 +27,13 @@ export default function Navbar() {
     if(!isLogged) return null
 
     return (
-    <header className="p-4 border-b">
-        <h1>Pick</h1>
-        <nav className="flex gap-4">
+    <header className={styles.header}>
+        <img src="logo.png" alt="logo" className={styles.logo} />
+
+        <nav className={styles.navbar}>
             <Link href="/Account">Il tuo profilo</Link>
+            <button className={styles.button} onClick={handleLogout}>Esci</button>
         </nav>
-    <button onClick={handleLogout}>Esci</button>
     </header>
     )
 }
