@@ -5,6 +5,7 @@ import Link from "next/link";
 import Cookies from "js-cookie";
 
 import { useRouter } from 'next/navigation'
+import Registrazione from "./components/moduloRegistrazione";
 
 // Tipizzo errore al login
 type LoginError = {
@@ -22,6 +23,9 @@ export default function FirstPageLogin() {
     // Stati per gestione errori e successo login
     const [error, setError] = useState<LoginError>({})
     const [success, setSuccess] = useState<string | null>('')
+
+    // Stato per modale registrazione
+    const [isRegisterOpen, setIsRegisterOpen] = useState(false)
     
     const router = useRouter()
     
@@ -119,8 +123,10 @@ export default function FirstPageLogin() {
         {/* Nuovo utente ? */}
         <div className="new-user">
           <p>Nuovo utente?</p>
-          <Link className="new-user-underline" href="">Registrati ora!</Link>
+          <button className="new-user-underline" onClick={() => setIsRegisterOpen(true)}>Registrati ora!</button>
         </div>
+
+        {isRegisterOpen && <Registrazione onClose={() => setIsRegisterOpen(false)}/>}
 
         {/* Messaggio di login effettuato */}
         <h3>{success}</h3>
