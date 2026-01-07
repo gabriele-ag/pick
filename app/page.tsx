@@ -69,7 +69,7 @@ export default function FirstPageLogin() {
 
           setSuccess("Login effettuato! Benvenuto su Pick!")
           setTimeout(() => {
-            router.push('/Benvenuto')
+            router.push('/Homepage')
           }, 2000)
         } else {
           setError({ general: result.message || 'Credenziali non valide'})

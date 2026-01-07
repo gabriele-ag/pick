@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { useData } from "../components/useData"
 import ModaleAggiungiGioco from "../components/moduloAggiungiGioco"
+import Navbar from "../components/navbar"
 
 import styles from "./CSS/account.module.css"
 
@@ -76,6 +77,9 @@ export default function Account() {
         {/* // Tutto da rivedere! */}
 
         <section className={styles.container}>
+
+            <Navbar/>
+            
             <h1>La mia Collezione</h1>
 
             <button 

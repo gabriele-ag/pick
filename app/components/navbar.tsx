@@ -21,14 +21,14 @@ export default function Navbar() {
     const handleLogout = () => {
         Cookies.remove('token');
         localStorage.removeItem('token');
-        window.location.href = '/Login';
+        window.location.href = '/';
     };
 
     if(!isLogged) return null
 
     return (
     <header className={styles.header}>
-        <img src="logo.png" alt="logo" className={styles.logo} />
+        <Link href="/Homepage"><img src="logo.png" alt="logo" className={styles.logo} /></Link>
 
         <nav className={styles.navbar}>
             <Link href="/Account">Il tuo profilo</Link>
