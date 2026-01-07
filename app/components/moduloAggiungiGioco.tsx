@@ -1,6 +1,8 @@
 import { useState } from "react"
 import Cookies from "js-cookie"
 
+// Da rivedere
+
 type Game = {
     id: string;
     name: string;

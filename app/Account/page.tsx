@@ -84,40 +84,29 @@ export default function Account() {
 
             <button 
                 onClick={() => setIsModalOpen(true)}
-                className={styles.addBtn} // Puoi creare questa classe nel CSS
+                className={styles.addBtn}
             >
                 + Aggiungi nuovo gioco
             </button>
             
-            <div className={styles.grid}>
+            <div className={styles.gameDivCollection}>
                 {collection.length === 0 ? (
                     <p>La tua collezione è vuota. Aggiungi qualche gioco!</p>
                 ) : (
-                    collection.map((gioco) => (
-                        <div key={gioco.id} className={styles.card}>
-                            <h3>{gioco.name}</h3>
-                            <p>Stato: <strong>{gioco.stato}</strong></p>
-                            
-                            <div className={styles.actions}>
-                                {/* Checkbox per completato */}
-                                <label>
-                                    <input 
-                                        type="checkbox" 
-                                        checked={gioco.stato === 'Completato'} 
-                                        onChange={() => toggleStatus(gioco.id, gioco.stato)}
-                                    />
-                                    Completato
-                                </label>
+                    collection.map((curGame) => (
+                        <div key={curGame.id} className={styles.gameCard}>
 
-                                {/* Bottone elimina */}
-                                <button 
-                                    onClick={() => handleRemoveGame(gioco.id)}
+                            <h3>{curGame.name}</h3>
+                            <p>{curGame.genre}</p>
+                            <p>Stato: <strong>{curGame.stato}</strong></p>
+                               
+                            <button 
+                                    onClick={() => handleRemoveGame(curGame.id)}
                                     className={styles.deleteBtn}
                                 >
                                     Rimuovi
-                                </button>
-                            </div>
-                        </div>
+                            </button>
+                            </div>                       
                     ))
                 )}
             </div>
