@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 
+
+
 :root {
   --background: #161618;
   --foreground: #F3F4F6;
@@ -23,31 +25,34 @@ input {
   border: 1px solid black;
 }
 
+.container {
+  padding: 0;
+  margin: auto;
+  max-width: 80%;
+}
+
 
 /* FIRST PAGE */
 
 .logo {
-  width: 150px;
-  margin-bottom: 60px;
-  margin-top: 100px;
+  width: 200px;
+  margin: auto;
+  padding: 150px 0 70px 0;
 }
 
 .title-login {
-  font-size: 20px;
+  font-size: 25px;
+  text-align: center;
 }
 
-.div-login {
+.form-login {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 40%;
+  margin: auto;
+  gap: 20px;
 }
 
-.div-form {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-}
 
 .input-login {
   background-color: rgb(34, 34, 34);
@@ -55,6 +60,7 @@ input {
   border-radius: 5px;
   border: 1px solid rgb(34, 34, 34);
   width: 100%;
+  display: block;
 }
 
 .error-login {
@@ -74,8 +80,59 @@ input {
 .new-user {
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
+
+
 .new-user-underline {
   text-decoration: underline;
   color: var(--common-color-2);
 }
+
+
+ @media screen and (max-width: 1024px) {
+
+    .title-login {
+      font-size: 25px;
+      text-align: center;
+    }
+
+    .form-login {
+      width: 60%;
+    }
+  
+ }
+
+
+  @media screen and (max-width: 768px) {
+
+    .logo {
+      width: 150px;
+    }
+
+    .title-login {
+      font-size: 20px;
+      text-align: center;
+    }
+  
+ }
+
+
+ @media screen and (max-width: 425px) {
+
+    .logo {
+      width: 130px;
+    }
+
+
+    .form-login {
+      width: 80%;
+    }
+
+    .new-user {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    
+ }

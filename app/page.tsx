@@ -87,17 +87,20 @@ export default function FirstPageLogin() {
 
   return (
     <>
-    <div className="div-login">
+    <section>
+
+    <img className="logo" src="logo.png" alt="logo" />
+
+    <div className="container">
 
       {/* Nome Web-App */}
-      <img className="logo" src="logo.png" alt="logo" />
 
 
-        <form className="form-login" onSubmit={handleLogin}>
+      <form className="form-login" onSubmit={handleLogin}>
           {error.general && <p>{error.general}</p>}
 
 
-          <div className="div-form">
+          
 
           <h2 className="title-login">Accedi al tuo account</h2>
 
@@ -117,14 +120,14 @@ export default function FirstPageLogin() {
 
             <button className="btn-login" type="submit">Accedi</button>
 
-          </div>
-        </form>
+            <div className="new-user">
+              <p>Nuovo utente?</p>
+              <button className="new-user-underline" onClick={() => setIsRegisterOpen(true)}>Registrati ora!</button>
+            </div>
+          
+      </form>
 
-        {/* Nuovo utente ? */}
-        <div className="new-user">
-          <p>Nuovo utente?</p>
-          <button className="new-user-underline" onClick={() => setIsRegisterOpen(true)}>Registrati ora!</button>
-        </div>
+        {/* Nuovo utente */}
 
         {isRegisterOpen && <Registrazione onClose={() => setIsRegisterOpen(false)}/>}
 
@@ -132,6 +135,7 @@ export default function FirstPageLogin() {
         <h3>{success}</h3>
 
       </div>
+      </section>
     </>
   );
 }
