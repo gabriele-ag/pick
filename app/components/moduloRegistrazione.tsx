@@ -17,8 +17,14 @@ export default function Registrazione({onClose}: {onClose: () => void}) {
         setStatus({type: "loading", msg: "Creazione account in corso..."})
 
         const hasLetter = /[a-zA-Z]/.test(formData.username)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        // Controllo su lunghezza e validità username e password
+        // Controllo su lunghezza e validità username, password e email
+
+        if (!emailRegex.test(formData.email)) {
+            setStatus({type: "error", msg: "L'email non è valida"})
+            return
+        }
 
         if (formData.username.length < 4 || !hasLetter) {
             setStatus({type: "error", msg: "L'username deve avere almeno 4 caratteri e una lettera"})
@@ -56,8 +62,9 @@ export default function Registrazione({onClose}: {onClose: () => void}) {
 
     return (
         <>
-        <div className={styles.moduleDiv}>
+        <div className={`${styles.moduleDiv} ${styles.fadeOut}`}>
             <h1 className={styles.title}>Crea Account</h1>
+            <button className={styles.cancelButton} onClick={onClose}>X</button>
             <div>
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <input className={styles.inputRegister} type="text" placeholder="Username" onChange={(e) => setFormData({...formData, username: e.target.value})} required />
@@ -67,21 +74,20 @@ export default function Registrazione({onClose}: {onClose: () => void}) {
                     <button className={styles.registerButton} type="submit">Registrati</button>
                 </form>
             </div>
+
+            {status.msg && (
+                <p className={styles.statusMsg}>{status.msg}</p>
+            )}
             
 
-            <div>
-                <h4>Requisiti per registrazione</h4>
+            <div className={styles.requiredDiv}>
+                <h4 className={styles.requiredTitle}>Requisiti per registrazione</h4>
                 <ul>
                     <li>L'username deve avere un minimo di 4 caratteri ed almeno una lettera</li>
                     <li>La password deve avere un minimo di 8 caratteri</li>
                 </ul>
             </div>
 
-            {status.msg && (
-                <p>{status.msg}</p>
-            )}
-
-            <button onClick={onClose}>Annulla</button>
         </div>
         </>
     )
