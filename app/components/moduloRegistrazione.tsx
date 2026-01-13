@@ -56,15 +56,15 @@ export default function Registrazione({onClose}: {onClose: () => void}) {
 
     return (
         <>
-        <div>
-            <h1>Crea Account</h1>
+        <div className={styles.moduleDiv}>
+            <h1 className={styles.title}>Crea Account</h1>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <input className={styles.inputRegister} type="text" placeholder="Username" onChange={(e) => setFormData({...formData, username: e.target.value})} required />
                     <input className={styles.inputRegister} type="text" placeholder="Email" onChange={(e) => setFormData({...formData, email: e.target.value})} required/>
                     <input className={styles.inputRegister} type="password" placeholder="Password" onChange={(e) => setFormData({...formData, password: e.target.value})} required />
 
-                    <button type="submit">Registrati</button>
+                    <button className={styles.registerButton} type="submit">Registrati</button>
                 </form>
             </div>
             
