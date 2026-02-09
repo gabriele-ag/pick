@@ -80,7 +80,7 @@ export default function Account() {
 
             <Navbar/>
             
-            <h1>La mia Collezione</h1>
+            <h1 className={styles.titleCollection}>La mia Collezione</h1>
 
             <button 
                 onClick={() => setIsModalOpen(true)}

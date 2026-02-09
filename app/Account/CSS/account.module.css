@@ -1,6 +1,16 @@
+/* Common */
 
-.headerApp {
-    padding: 30px 40px;
+.container {
+    max-width: 80%;
+    margin: auto;
+    padding: 0;
+}
+
+
+/* Collection CSS */
+
+.titleCollection {
+    font-size: 25px;
 }
 
 .navAccount {
