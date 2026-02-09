@@ -13,17 +13,37 @@
     font-size: 25px;
 }
 
-.navAccount {
-    display: flex;
-    justify-content: space-between;
-}
-
-.divButton {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.button {
+.gameName {
+    font-size: 20px;
     font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.gameDivCollection {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.gameCard {
+    background-color: rgb(49, 49, 49);
+    padding: 30px;
+}
+
+/* Pulsanti */
+
+.addBtn {
+    margin: 20px 0px;
+    background-color: blueviolet;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.deleteBtn {
+    margin: 20px 0px;
+    background-color: rgb(226, 95, 43);
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
 }

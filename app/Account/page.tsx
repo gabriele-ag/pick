@@ -86,7 +86,7 @@ export default function Account() {
                 onClick={() => setIsModalOpen(true)}
                 className={styles.addBtn}
             >
-                + Aggiungi nuovo gioco
+                Aggiungi nuovo gioco
             </button>
             
             <div className={styles.gameDivCollection}>
@@ -96,8 +96,8 @@ export default function Account() {
                     collection.map((curGame) => (
                         <div key={curGame.id} className={styles.gameCard}>
 
-                            <h3>{curGame.name}</h3>
-                            <p>{curGame.genre}</p>
+                            <h3 className={styles.gameName}>{curGame.name}</h3>
+                            <p>Genere: {curGame.genre}</p>
                             <p>Stato: <strong>{curGame.stato}</strong></p>
                                
                             <button 
