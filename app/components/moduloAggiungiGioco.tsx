@@ -23,6 +23,7 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
+    const [alertGameAdded, setAlertGameAdded] = useState(false)
 
     const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL
 
@@ -68,6 +69,7 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
 
     const handleAddGame = async (gameId: string) => {
         setError(null)
+        setAlertGameAdded(true)
 
         try {
             const token = localStorage.getItem('token')
@@ -92,7 +94,10 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
 
             onGameAdded()
             setSearch('')
-            setSearchResult([])
+            setTimeout(() => {
+                setAlertGameAdded(false)
+            }, 3000)
+            
         } catch (err) {
             const errorMessage = err instanceof Error ? err.message : "Errore nell'aggiunta";
             setError(errorMessage || "Errore nell'aggiunta")
@@ -134,17 +139,20 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
                     {searchResult.length > 0 ? (
                         <ul>
                             {searchResult.map((game) => (
-                                <li key={game.id} className="flex justify-between items-center p-2 border-b last:border-b-0">
-                                    <span>{game.name}</span>
+                                <li key={game.id} className={styles.gameResults}>
+                                    <span className={styles.gameName}>{game.name}</span>
                                     <button
                                         onClick={() => handleAddGame(game.id)}
                                         className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 text-sm"
                                     >
                                         Aggiungi
                                     </button>
+                                    
                                 </li>
                             ))}
+                        
                         </ul>
+                        
                     ) : (
                         search.trim() !== '' && !loading && !error && <p></p>
                     )}
@@ -157,6 +165,9 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
                 >
                     Chiudi
                 </button>
+                {alertGameAdded && (
+                        <h2>Gioco aggiunto con successo!</h2>
+                )}
             </div>
         </div>
     )
