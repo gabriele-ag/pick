@@ -127,7 +127,7 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
                     </button>
                 </div>
 
-                {error && <p className="text-red-500 mb-2">{error}</p>}
+                {error && <p className={styles.error}>{error}: gioco già aggiunto!</p>}
 
                 {/* Risultati della ricerca */}
                 <div className="max-h-60 overflow-y-auto border rounded-md mb-4">
@@ -146,7 +146,7 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
                             ))}
                         </ul>
                     ) : (
-                        search.trim() !== '' && !loading && !error && <p className="p-2 text-gray-500">Nessun risultato.</p>
+                        search.trim() !== '' && !loading && !error && <p></p>
                     )}
                 </div>
 

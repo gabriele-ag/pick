@@ -14,9 +14,7 @@
 }
 
 
-
-
-/* Collection CSS */
+/* Collection Game CSS */
 
 .titleCollection {
     font-size: 25px;
@@ -30,13 +28,17 @@
 
 .gameDivCollection {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
 .gameCard {
     background-color: rgb(49, 49, 49);
-    padding: 30px;
+    width: 20%;
+}
+
+.boxTextGame {
+    padding: 20px;
 }
 
 /* Pulsanti */
@@ -56,3 +58,10 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+.imgGame {
+    width: 100%;
+}
+
+
+

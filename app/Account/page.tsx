@@ -11,7 +11,7 @@ type Game = {
     id: string;
     name: string;
     genre: string;
-    img: string | null;
+    img: string;
     stato: 'Completato' | 'In pausa' | 'Da iniziare';
 }
 
@@ -96,16 +96,20 @@ export default function Account() {
                     collection.map((curGame) => (
                         <div key={curGame.id} className={styles.gameCard}>
 
-                            <h3 className={styles.gameName}>{curGame.name}</h3>
-                            <p>Genere: {curGame.genre}</p>
-                            {/* <p>Stato: <strong>{curGame.stato}</strong></p> */}
-                               
-                            <button 
-                                    onClick={() => handleRemoveGame(curGame.id)}
-                                    className={styles.deleteBtn}
-                                >
-                                    Rimuovi
-                            </button>
+                            <img className={styles.imgGame} src={curGame.img} alt="img-game" />
+                            <div className={styles.boxTextGame}>
+                                <h3 className={styles.gameName}>{curGame.name}</h3>
+                                <p>Genere: {curGame.genre}</p>
+                                
+                                
+                                
+                                <button 
+                                        onClick={() => handleRemoveGame(curGame.id)}
+                                        className={styles.deleteBtn}
+                                    >
+                                        Rimuovi
+                                </button>
+                            </div>
                             </div>                       
                     ))
                 )}
