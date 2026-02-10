@@ -98,7 +98,7 @@ export default function Account() {
 
                             <h3 className={styles.gameName}>{curGame.name}</h3>
                             <p>Genere: {curGame.genre}</p>
-                            <p>Stato: <strong>{curGame.stato}</strong></p>
+                            {/* <p>Stato: <strong>{curGame.stato}</strong></p> */}
                                
                             <button 
                                     onClick={() => handleRemoveGame(curGame.id)}

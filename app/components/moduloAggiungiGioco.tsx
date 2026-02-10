@@ -1,6 +1,8 @@
 import { useState } from "react"
 import Cookies from "js-cookie"
 
+import styles from "./CSS/moduloaggiungigioco.module.css"
+
 // Da rivedere
 
 type Game = {
@@ -103,23 +105,22 @@ export default function ModaleAggiungiGioco({isOpen, onClose, onGameAdded}: moda
     return (
         // Tutto da rivedere
         
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-                <h2 className="text-xl font-bold mb-4">Aggiungi Gioco alla Collezione</h2>
-
+        <div className={styles.divModule}>
+            <div className={styles.divInsideStyle}>
+                <h2 className={styles.titleModuleAddGame}>Aggiungi Gioco alla Collezione</h2>
                 {/* Barra di ricerca */}
-                <div className="flex mb-4">
+                <div className={styles.divInput}>
                     <input
                         type="text"
                         placeholder="Cerca un gioco..."
-                        className="flex-grow p-2 border rounded-l-md"
+                        className={styles.inputSearch}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         onKeyDown={(e) => { if (e.key === 'Enter') handleSearch(); }}
                     />
                     <button
                         onClick={handleSearch}
-                        className="bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600"
+                        className={styles.buttonSearch}
                         disabled={loading}
                     >
                         {loading ? 'Cerca...' : 'Cerca'}
