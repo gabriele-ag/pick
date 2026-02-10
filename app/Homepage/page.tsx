@@ -11,6 +11,7 @@ interface Game {
     id: number;
     name: string;
     genre: string;
+    img: string;
 }
 
 export default function Homepage() {
@@ -81,6 +82,7 @@ export default function Homepage() {
                 {winner ? (
                     <div className={styles.divgame}>
                         <h3 className={styles.gametitle}>{winner.name}</h3>
+                        <img src={winner.img} alt="" />
                     </div>
                 ) : (
                     !isPicking && <p>Clicca il tasto per estrarre un titolo dalla tua collezione</p>
