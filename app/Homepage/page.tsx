@@ -65,24 +65,29 @@ export default function Homepage() {
                 <h1 className={styles.titleHero}>Lasciati sorprendere!</h1>
                 <p className={styles.descrHero}>Ti senti indeciso? Pick è un app pensata per sceglierti il prossimo gioco dalla tua collezione. Aggiungi un gioco, scegli la categoria e poi premi sul pulsante!</p>
             </div>
+            
+            <section className={styles.sectionChoice}>
+                <div className={styles.container}>
 
-            <div className={styles.container}>
+                    <div className={styles.divChoice}>
+                        <label className={styles.labelChoice} htmlFor="genre-select">Scegli un genere!</label>
+                        <select 
+                            id="genre-select"
+                            value={selectedGenre} 
+                            onChange={(e) => setSelectedGenre(e.target.value)}
+                            className={styles.selectGenre}
+                        >
+                            {genres.map(genre => (
+                                <option key={genre} value={genre}>
+                                    {genre}
+                                </option>
+                            ))}
+                        </select>
 
-                
-                <label className={styles.labelChoice} htmlFor="genre-select">Quale genere scegli?</label>
-                <select 
-                    id="genre-select"
-                    value={selectedGenre} 
-                    onChange={(e) => setSelectedGenre(e.target.value)}
-                >
-                    {genres.map(genre => (
-                        <option key={genre} value={genre}>
-                            {genre}
-                        </option>
-                    ))}
-                </select>
-
-                <button className={styles.buttonpick} onClick={handlePick}>{isPicking ? "Pick sta decidendo per te..." : "Scegli casualmente!"}</button>
+                        <button className={styles.buttonPick} onClick={handlePick}>{isPicking ? "Pick sta decidendo per te..." : "Scegli casualmente!"}</button>
+                    </div>
+                </div>
+            </section>
 
                 <div>
                     {winner ? (
@@ -94,7 +99,6 @@ export default function Homepage() {
                         ""
                     )}
                 </div>
-            </div>
         </>
     )
 }

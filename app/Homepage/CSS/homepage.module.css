@@ -17,10 +17,17 @@
     padding: 100px 100px;
 }
 
-.buttonpick {
-    margin-top: 20px;
-    background-color: blueviolet;
-    color: aliceblue;
+.buttonPick {
+    background-color: var(--common-color-3);
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 10px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.buttonPick:hover {
+    background-color: var(--common-color-1);
 }
 
 .divgame {
@@ -29,7 +36,7 @@
 
 .gametitle {
     font-size: 20px;
-    color: aliceblue;
+    color: rgb(255, 255, 255);
 }
 
 .titleHero {
@@ -41,6 +48,27 @@
     font-size: 20px;
 }
 
+.sectionChoice {
+    background-color: rgb(255, 255, 255);
+}
+
+.divChoice {
+    padding: 40px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .labelChoice {
-    
+    color: var(--common-color-1);
+    font-size: 20px;
+}
+
+.selectGenre {
+    border: 1px solid var(--common-color-1);
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    color: var(--common-color-1);
 }
