@@ -46,17 +46,28 @@
 .addBtn {
     margin: 20px 0px;
     background-color: var(--common-color-2);
-    color: aliceblue;
+    color: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
+
 
 .deleteBtn {
     margin: 20px 0px;
     background-color: var(--common-color-3);
-    color: aliceblue;
+    color: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.addBtn:hover,
+.deleteBtn:hover {
+    background-color: rgb(255, 255, 255);
+    color: var(--common-color-1);
 }
 
 .imgGame {
