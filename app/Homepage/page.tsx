@@ -89,16 +89,21 @@ export default function Homepage() {
                 </div>
             </section>
 
-                <div>
+                
                     {winner ? (
-                        <div className={styles.divgame}>
-                            <h3 className={styles.gametitle}>{winner.name}</h3>
-                            <img src={winner.img} alt="" />
+                        <div>
+                            <div className={styles.divGame}>
+                                <img className={styles.imgGame} src={winner.img} alt="image-game" />
+                                <div className={styles.divGameInfo}>
+                                    <h3 className={styles.gameTitle}>{winner.name}</h3>
+                                    <p>Questa è la sezione di descrizione del gioco che verrà introdotta successivamente</p>
+                                </div>
+                            </div>
                         </div>
                     ) : (
                         ""
                     )}
-                </div>
+                
         </>
     )
 }

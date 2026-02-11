@@ -30,13 +30,22 @@
     background-color: var(--common-color-1);
 }
 
-.divgame {
-    margin-top: 20px
+.divGame {
+    display: flex;
+    justify-content: space-between;
 }
 
-.gametitle {
-    font-size: 20px;
+.gameTitle {
+    font-size: 40px;
     color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+}
+
+.divGameInfo {
+}
+
+.imgGame {
+    width: 30%;
 }
 
 .titleHero {
