@@ -60,33 +60,40 @@ export default function Homepage() {
     return (
         <>
             <Navbar/>
-            <h1>Lasciati sorprendere!</h1>
-            <p>Ti senti indeciso? Pick è un app pensata per sceglierti il prossimo gioco dalla tua collezione. Aggiungi un gioco, scegli la categoria e poi premi sul pulsante!</p>
 
-            <label htmlFor="genre-select">Quale genere scegli?</label>
-            <select 
-                id="genre-select"
-                value={selectedGenre} 
-                onChange={(e) => setSelectedGenre(e.target.value)}
-            >
-                {genres.map(genre => (
-                    <option key={genre} value={genre}>
-                        {genre}
-                    </option>
-                ))}
-            </select>
+            <div className={styles.hero}>
+                <h1 className={styles.titleHero}>Lasciati sorprendere!</h1>
+                <p className={styles.descrHero}>Ti senti indeciso? Pick è un app pensata per sceglierti il prossimo gioco dalla tua collezione. Aggiungi un gioco, scegli la categoria e poi premi sul pulsante!</p>
+            </div>
 
-            <button className={styles.buttonpick} onClick={handlePick}>{isPicking ? "Pick sta decidendo per te..." : "Scegli casualmente!"}</button>
+            <div className={styles.container}>
 
-            <div>
-                {winner ? (
-                    <div className={styles.divgame}>
-                        <h3 className={styles.gametitle}>{winner.name}</h3>
-                        <img src={winner.img} alt="" />
-                    </div>
-                ) : (
-                    !isPicking && <p>Clicca il tasto per estrarre un titolo dalla tua collezione</p>
-                )}
+                
+                <label className={styles.labelChoice} htmlFor="genre-select">Quale genere scegli?</label>
+                <select 
+                    id="genre-select"
+                    value={selectedGenre} 
+                    onChange={(e) => setSelectedGenre(e.target.value)}
+                >
+                    {genres.map(genre => (
+                        <option key={genre} value={genre}>
+                            {genre}
+                        </option>
+                    ))}
+                </select>
+
+                <button className={styles.buttonpick} onClick={handlePick}>{isPicking ? "Pick sta decidendo per te..." : "Scegli casualmente!"}</button>
+
+                <div>
+                    {winner ? (
+                        <div className={styles.divgame}>
+                            <h3 className={styles.gametitle}>{winner.name}</h3>
+                            <img src={winner.img} alt="" />
+                        </div>
+                    ) : (
+                        ""
+                    )}
+                </div>
             </div>
         </>
     )
