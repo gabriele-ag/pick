@@ -11,10 +11,21 @@
     padding: 0;
 }
 
+/* HERO */
+
 .hero {
     background-color: var(--common-color-2);
     text-align: center;
-    padding: 100px 100px;
+    padding: 50px 100px;
+}
+
+.titleHero {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.descrHero {
+    font-size: 20px;
 }
 
 .buttonPick {
@@ -30,39 +41,28 @@
     background-color: var(--common-color-1);
 }
 
+.backgrImg {
+    position: absolute;
+}
+
 .divGame {
     display: flex;
-    justify-content: space-between;
-}
-
-.gameTitle {
-    font-size: 40px;
-    color: rgb(255, 255, 255);
-    margin-bottom: 20px;
-}
-
-.divGameInfo {
+    justify-content: center;
 }
 
 .imgGame {
     width: 30%;
 }
 
-.titleHero {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
 
-.descrHero {
-    font-size: 20px;
-}
 
 .sectionChoice {
     background-color: rgb(255, 255, 255);
+    color: black;
+    padding: 40px 0px;
 }
 
 .divChoice {
-    padding: 40px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,4 +80,13 @@
     padding: 10px;
     background-color: rgb(255, 255, 255);
     color: var(--common-color-1);
+}
+
+/* FOOTER */
+
+.pickFooter {
+    position: fixed;
+    inset: auto 0 0 0;
+    padding: 30px 30px;
+    background-color: var(--common-color-1);
 }
