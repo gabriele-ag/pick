@@ -51,7 +51,7 @@
 }
 
 .imgGame {
-    width: 30%;
+    width: 60%;
 }
 
 
@@ -59,7 +59,7 @@
 .sectionChoice {
     background-color: rgb(255, 255, 255);
     color: black;
-    padding: 40px 0px;
+    padding: 65px 0px;
 }
 
 .divChoice {
@@ -85,8 +85,24 @@
 /* FOOTER */
 
 .pickFooter {
-    position: fixed;
+    position: relative;
     inset: auto 0 0 0;
-    padding: 30px 30px;
+    padding: 10px 30px;
     background-color: var(--common-color-1);
+}
+
+
+@media screen and (max-width: 768px) {
+    .hero {
+        padding: 50px 120px;
+    }
+
+    .imgGame {
+        width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    
 }
