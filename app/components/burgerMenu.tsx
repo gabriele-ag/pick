@@ -9,7 +9,7 @@ interface BurgerProps {
 }
 
 
-export default function burgerMenu({onLogout}: BurgerProps) {
+export default function BurgerMenu({onLogout}: BurgerProps) {
 
     const [open, setOpen] = useState<boolean>(false)
 

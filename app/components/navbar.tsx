@@ -7,6 +7,8 @@ import Cookies from "js-cookie"
 
 import styles from "./CSS/navbar.module.css"
 
+import BurgerMenu from "./burgerMenu"
+
 
 export default function Navbar() {
     
@@ -35,8 +37,8 @@ export default function Navbar() {
             <button className={styles.button} onClick={handleLogout}>Esci</button>
         </nav>
 
-        <div>
-            
+        <div className={styles.burger}>
+            <BurgerMenu onLogout={handleLogout}/>
         </div>
     </header>
     )
