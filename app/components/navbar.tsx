@@ -34,6 +34,10 @@ export default function Navbar() {
             <Link href="/Account">Il tuo profilo</Link>
             <button className={styles.button} onClick={handleLogout}>Esci</button>
         </nav>
+
+        <div>
+            
+        </div>
     </header>
     )
 }
