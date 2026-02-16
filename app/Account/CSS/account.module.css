@@ -33,7 +33,7 @@
 .gameDivCollection {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -78,6 +78,21 @@
 .imgGame {
     object-fit: cover;
     width: 100%;
+}
+
+@media (max-width: 1024px) {
+
+    .gameCard {
+        width: calc(30% - 9px);
+    }
+
+}
+
+@media (max-width: 600px) {
+    
+    .gameCard {
+        width: 100%;
+    }
 }
 
 

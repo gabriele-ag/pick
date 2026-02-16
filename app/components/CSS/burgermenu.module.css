@@ -11,25 +11,19 @@
 
 @media screen and (max-width: 425px) {
 
-    .burgerMenu {
+    .burgerMenu.open {
         position: absolute;
-        top: 40px;
+        top: 80px;
         right: 0;
         background: var(--common-color-2);
         padding: 20px 50px 20px;
-        margin-top: 40px;
         width: 100%;
+        z-index: 999;
 
         background-color: var(--common-color-4);
 
-        transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
-        z-index: 1000;
         display: flex;
         gap: 30px;
-    }
-
-    .burgerMenu.open {
-        transform: translateX(0);
     }
 }

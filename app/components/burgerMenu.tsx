@@ -25,10 +25,10 @@ export default function BurgerMenu({onLogout}: BurgerProps) {
                 <button onClick={() => setOpen(!open)}>//</button>
             </div>
 
-            <nav className={`${styles.burgerMenu} ${open ? styles.open : ""}`}>   
+            <div className={`${styles.burgerMenu} ${open ? styles.open : ""}`}>   
                 <Link href="/Account">Il tuo profilo</Link>
                 <button onClick={handleLogoutClick}>Esci</button>
-            </nav>
+            </div>
         </>
     )
 }
