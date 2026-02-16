@@ -76,9 +76,10 @@ export default function Account() {
         <>
         {/* // Tutto da rivedere! */}
 
-        <section className={styles.container}>
+        <Navbar/>
+        <section className={styles.accountSection}>
+        <div className={styles.container}>
 
-            <Navbar/>
             
             <h1 className={styles.titleCollection}>La mia Collezione</h1>
 
@@ -120,6 +121,7 @@ export default function Account() {
                 onClose={() => setIsModalOpen(false)}
                 onGameAdded={loadUserGames}
             />
+        </div>
         </section>
         </>
     )

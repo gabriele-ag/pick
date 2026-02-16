@@ -16,6 +16,10 @@
 
 /* Collection Game CSS */
 
+.accountSection {
+    padding: 50px 0px;
+}
+
 .titleCollection {
     font-size: 25px;
 }
@@ -29,12 +33,13 @@
 .gameDivCollection {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     gap: 20px;
 }
 
 .gameCard {
     background-color: rgb(49, 49, 49);
-    width: 20%;
+    width: calc(25% - 15px);
 }
 
 .boxTextGame {
@@ -71,6 +76,7 @@
 }
 
 .imgGame {
+    object-fit: cover;
     width: 100%;
 }
 
